@@ -1,4 +1,4 @@
-import { conntectDb } from "@/dbConfig/dbConfig";
+import { connectDb, conntectDb } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request) {
 	try {
+		connectDb();
 		// await User.deleteMany({});
 
 		//  insert data

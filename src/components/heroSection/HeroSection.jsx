@@ -48,7 +48,7 @@ const HeroSection = () => {
 				className="w-full lg:w-1/2  bg bg-gradient-to-r from-cyan-500 to-blue-500"
 			>
 				<Image
-					src="/public/images/artist-white.jpg"
+					src="/images/artist-white.jpg"
 					alt="..."
 					className="w-96 h-80 -ml-44 mt-24"
 					width={200}

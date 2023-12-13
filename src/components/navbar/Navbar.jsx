@@ -6,7 +6,9 @@ import Link from "next/link";
 const Nav = () => {
 	return (
 		<nav className="flex justify-between bg-green-500 h-16 p-5">
-			<p className="font-bold">navbar</p>
+			<Link href="/">
+				<p className="font-bold">navbar</p>
+			</Link>
 			<div className=" flex gap-5 ">
 				<Link href="/task">Task home</Link>
 				<Link href="/login">Login</Link>

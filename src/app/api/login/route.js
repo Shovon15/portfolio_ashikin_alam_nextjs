@@ -1,13 +1,12 @@
-import { conntectDb } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import bcryptjs from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 import { sign } from "jsonwebtoken";
-
-conntectDb();
+import { connectDb } from "@/dbConfig/dbConfig";
 
 export async function POST(request) {
 	try {
+		connectDb();
 		const reqBody = await request.json();
 		const { email, password } = reqBody;
 
@@ -33,7 +32,7 @@ export async function POST(request) {
 				user,
 			},
 		});
-		
+
 		response.cookies.set("token", token, {
 			httpOnly: true,
 		});

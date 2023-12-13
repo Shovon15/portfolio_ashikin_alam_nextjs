@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Dashboard = () => {
-	const [user, setUser] = useState("");
 	const router = useRouter();
+	const [user, setUser] = useState("");
 	console.log(user);
 	const fetchData = async () => {
 		try {
@@ -36,12 +36,14 @@ const Dashboard = () => {
 	return (
 		<div className="min-h-screen">
 			<p>Dashboard</p>
-           <div>
-            {user && <div>
-                <p className="text-2xl font-bold p-5">{user.name}</p>
-                <p className="text-xl font-semibold p-2">{user.email}</p>
-            </div>}
-           </div>
+			<div>
+				{user && (
+					<div>
+						<p className="text-2xl font-bold p-5">{user.name}</p>
+						<p className="text-xl font-semibold p-2">{user.email}</p>
+					</div>
+				)}
+			</div>
 			<Button onClick={handleLogout}>Logout</Button>
 		</div>
 	);

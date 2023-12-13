@@ -7,13 +7,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
+	const router = useRouter();
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
-
-	const router = useRouter()
 
 	const handleLogin = async (data) => {
 		const loginData = {
@@ -23,9 +22,7 @@ const LoginPage = () => {
 
 		try {
 			const response = await axios.post("/api/login", loginData);
-			if(response.status=== 200){
-				router.push('/dashboard')
-			}
+			router.push("/dashboard");
 			console.log(response, "user");
 		} catch (error) {
 			console.log(error, "error from login page");

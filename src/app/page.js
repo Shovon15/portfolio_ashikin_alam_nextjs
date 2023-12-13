@@ -5,15 +5,11 @@ import { Button } from "@material-tailwind/react";
 
 import { HeroSection } from "@/components";
 import { useEffect } from "react";
-import { conntectDb } from "@/dbConfig/dbConfig";
 
 export default function Home() {
-	useEffect(() => {
-		conntectDb();
-	}, []);
 	return (
 		<div>
-			<HeroSection />
+			{/* <HeroSection /> */}
 			<section className="flex h-[400px] p-10">
 				<div className="w-full lg:w-1/2 p-5 flex flex-col gap-5 justify-center items-center">
 					<p className="text-2xl font-bold">
@@ -28,9 +24,9 @@ export default function Home() {
 				</div>
 				<div className="w-full lg:w-1/2 p-5">
 					<Image
-						src="/public/images/artist-white.jpg"
+						src="/images/businessman-working-laptop.jpg"
 						alt="..."
-						className="w-full h-full object-cover"
+						className="w-auto h-auto object-cover"
 						width={200}
 						height={200}
 					/>
