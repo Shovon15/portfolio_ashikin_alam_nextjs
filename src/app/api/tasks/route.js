@@ -1,12 +1,10 @@
+import { connectDb } from "@/dbConfig/dbConfig";
 import Task from "@/models/taskModel";
 import { NextRequest, NextResponse } from "next/server";
 
-const { conntectDb } = require("@/dbConfig/dbConfig");
-
-conntectDb();
-
 export async function POST(request) {
 	try {
+		connectDb();
 		const reqBody = await request.json();
 		const { name, desc } = reqBody;
 		// console.log(reqBody);
