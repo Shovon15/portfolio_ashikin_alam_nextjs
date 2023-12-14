@@ -1,5 +1,6 @@
 "use client";
 
+import { showErrorToast, showSuccessToast } from "@/components";
 import { Button } from "@material-tailwind/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -28,8 +29,10 @@ const Dashboard = () => {
 			const res = await axios.get("/api/logout");
 			console.log(res.data.message);
 			router.push("/login");
+			showSuccessToast("Logout Successful");
 		} catch (error) {
 			console.log(error);
+			showErrorToast("Logout Failed");
 		}
 	};
 

@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 export function middleware(request) {
 	const path = request.nextUrl.pathname;
 
-	const isPublicPath = path === "/login" || path === "/signup";
+	const isPublicPath = path === "/login" || path === "/signup" || path === "/";
 
 	const token = request.cookies.get("token")?.value || "";
 
@@ -16,9 +17,9 @@ export function middleware(request) {
 	}
 
 	// Check if the path is a nested route under "/dashboard"
-	if (path.startsWith("/dashboard") && !token) {
-		return NextResponse.redirect("/login");
-	}
+	// if (path.startsWith("/dashboard") && !token) {
+	// 	return NextResponse.redirect(new URL("/login", request.nextUrl));
+	// }
 
 	// Continue to the next middleware or handler
 	return null;
@@ -26,5 +27,5 @@ export function middleware(request) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-	matcher: ["/", "/dashboard", "/login"],
+	matcher: ["/", "/dashboard/:path*", "/login"],
 };

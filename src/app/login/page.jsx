@@ -1,5 +1,6 @@
 "use client";
 
+import { showErrorToast, showSuccessToast } from "@/components";
 import { Button, Card, Input, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -23,9 +24,11 @@ const LoginPage = () => {
 		try {
 			const response = await axios.post("/api/login", loginData);
 			router.push("/dashboard");
+			showSuccessToast("Login Successful");
 			console.log(response, "user");
 		} catch (error) {
 			console.log(error, "error from login page");
+			showErrorToast("Login failed");
 		}
 	};
 

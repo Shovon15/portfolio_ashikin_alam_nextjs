@@ -3,10 +3,13 @@ import Image from "next/image";
 
 import { Button } from "@material-tailwind/react";
 
-import { HeroSection } from "@/components";
+import { HeroSection, showSuccessToast } from "@/components";
 import { useEffect } from "react";
 
 export default function Home() {
+	const handleToast = () => {
+		showSuccessToast("hello from toast");
+	};
 	return (
 		<div>
 			{/* <HeroSection /> */}
@@ -31,6 +34,7 @@ export default function Home() {
 						height={200}
 					/>
 				</div>
+				<Button onClick={handleToast}>toast</Button>
 			</section>
 		</div>
 	);
