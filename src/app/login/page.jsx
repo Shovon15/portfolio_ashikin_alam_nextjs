@@ -23,9 +23,9 @@ const LoginPage = () => {
 
 		try {
 			const response = await axios.post("/api/login", loginData);
-			router.push("/dashboard");
 			showSuccessToast("Login Successful");
-			console.log(response, "user");
+			console.log(router, "router");
+			router.push("/dashboard");
 		} catch (error) {
 			console.log(error, "error from login page");
 			showErrorToast("Login failed");

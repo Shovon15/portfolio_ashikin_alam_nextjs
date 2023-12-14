@@ -4,15 +4,21 @@ import { NextResponse } from "next/server";
 export function middleware(request) {
 	const path = request.nextUrl.pathname;
 
-	const isPublicPath = path === "/login" || path === "/signup" || path === "/";
+	const logedInUserNotAccessPath = path === "/login";
 
 	const token = request.cookies.get("token")?.value || "";
 
-	if (isPublicPath && token) {
+	console.log(token, "token from middleware");
+	if(logedInUserNotAccessPath && token){
 		return NextResponse.redirect(new URL("/dashboard", request.nextUrl));
 	}
 
-	if (!isPublicPath && !token) {
+
+	// if (isPublicPath === "/login" && token) {
+	// 	return NextResponse.redirect(new URL("/dashboard", request.nextUrl));
+	// }
+
+	if (!logedInUserNotAccessPath && !token) {
 		return NextResponse.redirect(new URL("/login", request.nextUrl));
 	}
 
